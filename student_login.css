@@ -76,6 +76,28 @@ button[type="submit"]:hover {
   background-color: #0072ff;
 }
 
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.remember-me input {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.remember-me label {
+  font-size: 14px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.remember-me input:checked + label {
+  color: #00c6ff;
+}
+
 .back-link {
   margin-top: 20px;
 }
