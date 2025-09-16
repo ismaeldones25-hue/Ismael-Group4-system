@@ -1,0 +1,80 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+url('TI.jpg') no-repeat center center / cover fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+  color: #fff;
+}
+
+.topbar {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.container h2 {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.role-options {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.role-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  color: #fff;
+}
+
+.role-card:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.role-card i {
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.role-card:hover i {
+  transform: scale(1.2);
+}
+
+.role-card p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
