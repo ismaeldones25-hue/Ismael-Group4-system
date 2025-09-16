@@ -76,6 +76,44 @@ button[type="submit"]:hover {
   background-color: #0072ff;
 }
 
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.remember-me label {
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.forgot-password-link {
+  font-size: 0.9rem;
+}
+
+.forgot-password-link a {
+  color: #fff;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
 .remember-me {
   display: flex;
   align-items: center;
