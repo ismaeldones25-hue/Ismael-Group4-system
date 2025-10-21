@@ -2,98 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Student Report</title>
-    <link rel="stylesheet" href="student.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Student Report</title>
+  <link rel="stylesheet" href="student.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div class="report-container">
-        <h2><i class="fas fa-exclamation-circle"></i> Report Incident</h2>
-
-        <!-- Report Form -->
-        <form id="reportForm">
-            <div class="form-group">
-                <label for="type"><i class="fas fa-list"></i> Type of Report</label>
-                <select id="type">
-                    <option>Bullying</option>
-                    <option>Harassment</option>
-                    <option>Physical Assault</option>
-                    <option>Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="details"><i class="fas fa-comment-dots"></i> Details</label>
-                <textarea id="details" rows="4" placeholder="Describe what happened..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="media"><i class="fas fa-upload"></i> Upload Image/Video (optional)</label>
-                <input type="file" id="media" accept="image/*,video/*">
-            </div>
-            <div class="form-group">
-                <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
-                <input type="text" id="studentName" placeholder="Enter student name" required>
-            </div>
-
-            <!-- Select Available Appointment Date -->
-            <h3><i class="fas fa-calendar-alt"></i> Select Available Appointment Date</h3>
-            <div id="calendar">
-                <input type="date" id="appointmentDate" required>
-            </div>
-
-            <!-- Available Time Slots (dropdown selection) -->
-            <div class="form-group">
-                <label for="appointmentTime"><i class="fas fa-clock"></i> Select Available Time Slot</label>
-                <select id="appointmentTime" required>
-                    <option value="">Select Time Slot</option>
-                    <option>9:00 AM - 10:00 AM</option>
-                    <option>10:00 AM - 11:00 AM</option>
-                    <option>11:00 AM - 12:00 PM</option>
-                    <option>1:00 PM - 2:00 PM</option>
-                    <option>2:00 PM - 3:00 PM</option>
-                </select>
-            </div>
-
-            <button type="submit"><i class="fas fa-paper-plane"></i> Submit Report</button>
-        </form>
-        <p class="back-link"><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></p>
-    </div>
-
-    <script>
-        document.getElementById("reportForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const studentName = document.getElementById("studentName").value;
-            const appointmentDate = document.getElementById("appointmentDate").value;
-            const appointmentTime = document.getElementById("appointmentTime").value;
-            const reportDetails = document.getElementById("details").value;
-            const reportType = document.getElementById("type").value;
-            if (!studentName || !appointmentDate || !appointmentTime) {
-                alert("Please fill out all required fields.");
-                return;
-            }
-            if (!reportDetails) {
-                alert("Please provide details for the report.");
-                return;
-            }
-            const reportData = {
-                studentName: studentName,
-                reportType: reportType,
-                reportDetails: reportDetails,
-                appointmentDate: appointmentDate,
-                appointmentTime: appointmentTime
-            };
-
-            localStorage.setItem("reportData", JSON.stringify(reportData));
-
-            
-            window.location.href = "index.html";
-        });
-    </script>
+  <div class="report-container">
+    <h2><i class="fas fa-exclamation-circle"></i> Report Incident</h2>
+    
+    <form id="reportForm">
+      <!-- Type of Report (Clickable cards) -->
+      <div class="form-group">
+        <label><i class="fas fa-list"></i> Type of Report</label>
+        <div class="report-types">
+          <div class="report-option" data-type="Bullying">
+            <i class="fas fa-user-slash"></i>
+            <p>Bullying</p>
+          </div>
+          <div class="report-option" data-type="Harassment">
+            <i class="fas fa-hand-paper"></i>
+            <p>Harassment</p>
+          </div>
+          <div class="report-option" data-type="Physical Assault">
+            <i class="fas fa-fist-raised"></i>
+            <p>Physical Assault</p>
+          </div>
+          <div class="report-option" data-type="Other">
+            <i class="fas fa-ellipsis-h"></i>
+            <p>Other</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="details"><i class="fas fa-comment-dots"></i> Details</label>
+        <textarea id="details" rows="4" placeholder="Describe what happened..." required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="media"><i class="fas fa-upload"></i> Upload Image/Video (optional)</label>
+        <input type="file" id="media" accept="image/*,video/*">
+      </div>
+      
+      <div class="form-group">
+        <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter student name" required>
+      </div>
+      
+      <h3><i class="fas fa-calendar-alt"></i> Select Available Appointment Date</h3>
+      <div id="calendar">
+        <input type="date" id="appointmentDate" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="appointmentTime"><i class="fas fa-clock"></i> Select Available Time Slot</label>
+        <select id="appointmentTime" required>
+          <option value="">Select Time Slot</option>
+          <option>9:00 AM - 10:00 AM</option>
+          <option>10:00 AM - 11:00 AM</option>
+          <option>11:00 AM - 12:00 PM</option>
+          <option>1:00 PM - 2:00 PM</option>
+          <option>2:00 PM - 3:00 PM</option>
+        </select>
+      </div>
+      
+      <button type="submit"><i class="fas fa-paper-plane"></i> Submit Report</button>
+    </form>
+    
+    <p class="back-link"><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></p>
+  </div>
+  
+  <script>
+    let selectedType = "";
+    
+    // Handle clickable report types
+    document.querySelectorAll(".report-option").forEach(option => {
+      option.addEventListener("click", () => {
+        document.querySelectorAll(".report-option").forEach(o => o.classList.remove("active"));
+        option.classList.add("active");
+        selectedType = option.dataset.type;
+      });
+    });
+    
+    document.getElementById("reportForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const studentName = document.getElementById("studentName").value;
+      const appointmentDate = document.getElementById("appointmentDate").value;
+      const appointmentTime = document.getElementById("appointmentTime").value;
+      const reportDetails = document.getElementById("details").value;
+      
+      if (!selectedType) {
+        alert("Please select a report type.");
+        return;
+      }
+      if (!studentName || !appointmentDate || !appointmentTime) {
+        alert("Please fill out all required fields.");
+        return;
+      }
+      if (!reportDetails) {
+        alert("Please provide details for the report.");
+        return;
+      }
+      
+      const reportData = {
+        studentName,
+        reportType: selectedType,
+        reportDetails,
+        appointmentDate,
+        appointmentTime
+      };
+      
+      localStorage.setItem("reportData", JSON.stringify(reportData));
+      window.location.href = "index.html";
+    });
+  </script>
 </body>
 
 </html>
